@@ -18,7 +18,7 @@ loginBtn.addEventListener('click', () => {
     const user = document.getElementById('username').value;
     const pass = document.getElementById('password').value;
 
-    //  Demo Credentials 
+    //  Demo Login
     if (user === 'admin' && pass === 'admin123') {
         loginPage.classList.add('hidden'); 
         mainPage.classList.remove('hidden'); 
