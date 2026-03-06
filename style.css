@@ -1,0 +1,12 @@
+ .active-tab { 
+       border-bottom: 3px solid #6366f1;
+        font-weight: bold;
+        background-color: #4A00FF;
+        color: white;
+
+}
+       .hidden { display: none; }
+
+        body{
+              font-family: "Geist", sans-serif;
+        }
