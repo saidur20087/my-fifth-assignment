@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Issue Tracker</title>
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
     <!-- tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,11 +16,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
     <!-- icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
-<body class="bg-gray-50 font-sans max-w-[90%] mx-auto">
+<body class="bg-gray-50 max-w-[80%] mx-auto">
 
     <!-- Login Page -->
     <div id="login-page" class="min-h-screen flex items-center justify-center">
@@ -32,8 +36,7 @@
             <input type="password" value="admin123" id="password" placeholder="Password"
                 class="w-full p-2 mb-3 border rounded outline-none">
 
-            <button onclick="handleLogin()"
-            id="loginBtn" class="w-full bg-indigo-600 text-white py-2 rounded">Sign In
+            <button onclick="handleLogin()" id="loginBtn" class="w-full bg-indigo-600 text-white py-2 rounded">Sign In
             </button>
 
             <div class="mt-4 text-xs text-left bg-gray-100 p-2 rounded">
@@ -59,18 +62,18 @@
         </nav>
 
         <!-- Button -->
-        <div class="max-w-7xl mx-auto mt-8 px-4">
-            <div class="flex gap-6 border-b mb-8 shadow-sm">
-                <button onclick="filterData('all')" id="tab-all" class="pb-2 active-tab rounded">All</button>
-                <button onclick="filterData('open')" id="tab-open" class="pb-2">Open</button>
-                <button onclick="filterData('closed')" id="tab-closed" class="pb-2">Closed</button>
+        <div class="mt-8 px-4">
+            <div class="flex gap-6 border-b-gray-600 mb-8 shadow-sm">
+                <button onclick="filterData('all')" id="tab-all" class="py-2 active-tab rounded border-gray-800 shadow-md w-20">All</button>
+                <button onclick="filterData('open')" id="tab-open" class="py-2 border-gray-800 shadow-md w-20 rounded">Open</button>
+                <button onclick="filterData('closed')" id="tab-closed" class="py-2 border-gray-800 shadow-md w-20 rounded">Closed</button>
             </div>
 
             <!-- Issue Traker -->
-            <div class="flex justify-between items-center border-b pb-4 mb-6 shadow-sm">
+            <div class="flex justify-between items-center border-b-gray-600 pb-4 mb-6 shadow-sm">
                 <div class="flex items-center gap-3">
                     <div class="bg-indigo-100 p-2 rounded-full">
-                  <img src="./assets/Aperture.png" alt="">
+                        <img src="./assets/Aperture.png" alt="">
                     </div>
                     <div>
                         <h2 id="issue-count" class="font-bold text-gray-800 leading-none">0 Issues</h2>
@@ -78,13 +81,15 @@
                     </div>
                 </div>
                 <div class="flex gap-4 text-xs font-semibold">
-                    <span class="flex items-center gap-1.5 text-gray-600"><span class="w-2.5 h-2.5 rounded-full bg-green-500"></span> Open</span>
-                    <span class="flex items-center gap-1.5 text-gray-600"><span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span> Closed</span>
+                    <span class="flex items-center gap-1.5 text-gray-600"><span
+                            class="w-2.5 h-2.5 rounded-full bg-green-500"></span> Open</span>
+                    <span class="flex items-center gap-1.5 text-gray-600"><span
+                            class="w-2.5 h-2.5 rounded-full bg-purple-500"></span> Closed</span>
                 </div>
             </div>
             <!-- card Loader -->
             <div id="loader" class="text-center py-10 hidden">
-                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto">
+                <div class="rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto">
 
                 </div>
             </div>
@@ -94,13 +99,13 @@
         </div>
     </div>
 
-<!-- modal -->
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white p-6 rounded-lg max-w-md w-full">
-            <div id="modal-content"></div>
-            <button onclick="closeModal()" class="mt-6 w-full bg-red-500 text-white py-2 rounded">Close</button>
-        </div>
+    <!-- modal -->
+<div id="modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white p-6 rounded-lg max-w-md w-full shadow-2xl">
+        <div id="modal-content"></div>
+        <button onclick="closeModal()" class="mt-6 w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-lg transition-colors">Close</button>
     </div>
+</div>
 
     <script src="script.js"></script>
 </body>
