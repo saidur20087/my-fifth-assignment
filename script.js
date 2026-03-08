@@ -157,8 +157,8 @@ async function openSingleIssue(id) {
 
         // modal show
         const modal = document.getElementById('modal');
-        modal.classList.remove('hidden'); // remove hidden
-        modal.classList.add('flex');       // add flex to center content
+        modal.classList.remove('hidden'); 
+        modal.classList.add('flex');       
 
     } catch (e) {
         alert("Error!");
