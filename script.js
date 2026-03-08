@@ -32,7 +32,7 @@ async function fetchIssues() {
         allIssues = Array.isArray(data) ? data : (data.data || []);
 
         displayIssues(allIssues);
-        updateCount(allIssues.length); /
+        updateCount(allIssues.length);
     } catch (err) {
         console.error("Error:", err);
     }
