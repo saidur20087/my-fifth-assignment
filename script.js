@@ -1,4 +1,4 @@
-// --- Global Variables ---
+// --- get Variables ---
 let allIssues = [];
 const issuesGrid = document.getElementById('issues-grid');
 const loader = document.getElementById('loader');
@@ -13,7 +13,7 @@ function handleLogin() {
         document.getElementById('login-page').classList.add('hidden');
         document.getElementById('main-page').classList.remove('hidden');
 
-        // Login houar por "All" button-e default color set koro
+        // Login houar por "All" button-e default color set 
         const allBtn = document.getElementById('tab-all');
         allBtn.classList.add('bg-indigo-600', 'text-white', 'px-4', 'rounded');
 
@@ -32,7 +32,7 @@ async function fetchIssues() {
         allIssues = Array.isArray(data) ? data : (data.data || []);
 
         displayIssues(allIssues);
-        updateCount(allIssues.length); // Total count set koro
+        updateCount(allIssues.length); /
     } catch (err) {
         console.error("Error:", err);
     }
@@ -65,7 +65,6 @@ function displayIssues(issues) {
         issuesGrid.innerHTML += card;
     });
 }
-
 
 
 // --- 4. Filter Data (With Active Color Logic) ---

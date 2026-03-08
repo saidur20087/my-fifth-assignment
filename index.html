@@ -24,20 +24,24 @@
 
 <body class="bg-gray-50 max-w-[80%] mx-auto">
 
-    <!-- Login Page -->
-    <div id="login-page" class="min-h-screen flex items-center justify-center">
-        <div class="bg-white p-8 rounded-lg shadow-md w-96 text-center">
+     <div id="login-page" class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-2xl w-98 text-center">
             <img src="./assets/github-logo.png" alt="Logo" class="w-16 mx-auto mb-4">
             <h2 class="text-2xl font-bold">GitHub Issue Tracker</h2>
             <p class="text-gray-500 mb-6">Track and manage your issue status</p>
 
             <input type="text" value="admin" id="username" placeholder="Username"
-                class="w-full p-2 mb-3 border rounded outline-none">
+                class="w-full p-2  border rounded outline-none">
+            <p class="text-left text-[#4A00FF] mb-6">Default: admin</p>
             <input type="password" value="admin123" id="password" placeholder="Password"
-                class="w-full p-2 mb-3 border rounded outline-none">
+                class="w-full p-2 border rounded outline-none">
+            <p class="text-left text-[#4A00FF] mb-6">Default: admin123</p>
 
-            <button onclick="handleLogin()" id="loginBtn" class="w-full bg-indigo-600 text-white py-2 rounded">Sign In
+            <button onclick="handleLogin()" id="loginBtn"
+                class="w-full btn btn-primary text-white py-2 mb-6 rounded">Sign In
             </button>
+            <p>OR</p>
+            <hr class="text-gray-300">
 
             <div class="mt-4 text-xs text-left bg-gray-100 p-2 rounded">
                 <p>Demo Credentials:</p>
