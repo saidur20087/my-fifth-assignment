@@ -49,19 +49,44 @@ function displayIssues(issues) {
         const borderColor = isOpen ? 'border-t-green-500' : 'border-t-purple-500';
 
         const card = `
-            <div onclick="openSingleIssue('${issue.id}')" class="bg-white p-4 rounded-lg shadow-sm border-t-4 ${borderColor} cursor-pointer hover:shadow-md transition flex flex-col justify-between">
-                <div>
-                    <h3 class="font-bold text-sm text-gray-800 truncate">${issue.title || 'No Title'}</h3>
-                    <p class="text-[11px] text-gray-500 mt-2 mb-4 line-clamp-2">${issue.description || 'No Description'}</p>
-                    <div class="flex flex-wrap gap-2 mb-3">
-                        <span class="bg-gray-100 px-2 py-0.5 rounded text-[10px] font-medium">${issue.category || 'N/A'}</span>
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded text-[10px] font-medium">${issue.priority || 'Medium'}</span>
-                    </div>
+        <div class="bg-white border border-gray-100 rounded-xl shadow-sm flex flex-col h-full">
+        
+        <div class="p-5 flex-grow">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-7 h-7 rounded-full bg-green-50 border border-green-200 flex items-center justify-center">
+                    <img src="./assets/Open-Status.png" alt="">
                 </div>
-                <div class="text-[10px] text-gray-400 border-t pt-3">
-                    By ${issue.author || 'Unknown'} • ${issue.createdAt ? new Date(issue.createdAt).toLocaleDateString() : 'N/A'}
-                </div>
-            </div>`;
+                <span class="text-[10px] font-extrabold px-3 py-1 rounded-full bg-red-50 text-red-500 uppercase tracking-tighter">
+                    ${issue.priority}
+                </span>
+            </div>
+
+            <h3 class="text-[17px] font-bold text-slate-600 leading-snug mb-2">
+                ${issue.title}
+            </h3>
+
+            <p class="text-[13px] text-slate-500 leading-relaxed mb-5 line-clamp-2">
+            ${issue.description}
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-red-500 text-[11px] font-bold border border-red-100">
+                    <i class="fa-solid fa-bug text-[10px]"></i> ${issue.labels[0]}
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-600 text-[11px] font-bold border border-amber-100">
+                    <i class="fa-regular fa-life-ring"></i>  ${issue.labels[1]}
+                </span>
+            </div>
+        </div>
+
+        <div class="px-5 py-4 border-t border-gray-50 bg-gray-50/20 mt-auto">
+            <div class="text-[12px] text-slate-400">
+                <p class="mb-0.5">#1 by <span class="font-bold text-slate-600 italic">${issue.author}</span></p>
+                <p class="font-medium">1/15/2024</p>
+            </div>
+        </div>
+    </div>`;
+    
         issuesGrid.innerHTML += card;
     });
 }
