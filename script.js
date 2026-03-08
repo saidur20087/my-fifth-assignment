@@ -49,7 +49,7 @@ function displayIssues(issues) {
         let borderColor = isOpen ? 'border-t-green-500' : 'border-t-purple-500';
 
         const card = `
-        <div class="bg-white border-t-4 ${borderColor} rounded-xl shadow-sm flex flex-col h-full">
+        <div onclick="openSingleIssue('${issue.id}')" class="cursor-pointer bg-white border-t-4 ${borderColor} rounded-xl shadow-sm flex flex-col h-full">
         
         <div class="p-5 flex-grow">
             <div class="flex items-center justify-between mb-4">
@@ -71,10 +71,10 @@ function displayIssues(issues) {
 
             <div class="flex flex-wrap gap-2 mb-2">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-red-500 text-[11px] font-bold border border-red-100">
-                    <i class="fa-solid fa-bug text-[10px]"></i> ${issue.labels[0]}
+                    <i class="fa-solid fa-bug text-[10px]"></i> ${issue.labels?.[0] || ''}
                 </span>
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-600 text-[11px] font-bold border border-amber-100">
-                    <i class="fa-regular fa-life-ring"></i>  ${issue.labels[1]}
+                    <i class="fa-regular fa-life-ring"></i>  ${issue.labels?.[1] || ''}
                 </span>
             </div>
         </div>
@@ -143,24 +143,38 @@ async function openSingleIssue(id) {
     try {
         const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
         const result = await res.json();
-        const issue = result.data || result; 
+        const issue = result.data || result;
 
+        // modal content update
         document.getElementById('modal-content').innerHTML = `
             <h2 class="text-xl font-bold mb-2">${issue.title || 'No Title'}</h2>
             <p class="text-sm text-gray-600 mb-4">${issue.description || 'No Description'}</p>
             <div class="grid grid-cols-2 gap-2 text-xs text-gray-500">
                 <p><b>Status:</b> ${issue.status || 'N/A'}</p>
                 <p><b>Author:</b> ${issue.author || 'Unknown'}</p>
-            </div>`;
-        
+            </div>
+        `;
+
+        // modal show
         const modal = document.getElementById('modal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex'); 
-    } catch (e) { 
-        alert("Error!"); 
+        modal.classList.remove('hidden'); // remove hidden
+        modal.classList.add('flex');       // add flex to center content
+
+    } catch (e) {
+        alert("Error!");
+        console.error(e);
     }
     showLoader(false);
 }
+
+// Close modal function
+function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+
 
 function closeModal() { document.getElementById('modal').classList.add('hidden'); }
 
