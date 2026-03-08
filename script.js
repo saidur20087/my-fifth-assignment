@@ -13,7 +13,7 @@ function handleLogin() {
         document.getElementById('login-page').classList.add('hidden');
         document.getElementById('main-page').classList.remove('hidden');
 
-        // Login houar por "All" button-e default color set 
+        // "All" button color set 
         const allBtn = document.getElementById('tab-all');
         allBtn.classList.add('bg-indigo-600', 'text-white', 'px-4', 'rounded');
 
@@ -67,13 +67,13 @@ function displayIssues(issues) {
 }
 
 
-// --- 4. Filter Data (With Active Color Logic) ---
+// --- 4. Filter Data 
 function filterData(status) {
     const tabs = ['all', 'open', 'closed'];
 
     tabs.forEach(tab => {
         const btn = document.getElementById(`tab-${tab}`);
-        // Click kora button-e color thakbe, bakigulo default hobe
+        // Click kora button-e color thakbe
         if (tab === status) {
             btn.classList.add('bg-indigo-600', 'text-white', 'px-4', 'rounded');
         } else {
