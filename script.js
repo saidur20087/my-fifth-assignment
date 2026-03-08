@@ -49,7 +49,7 @@ function displayIssues(issues) {
         const borderColor = isOpen ? 'border-t-green-500' : 'border-t-purple-500';
 
         const card = `
-        <div class="bg-white border border-gray-100 rounded-xl shadow-sm flex flex-col h-full">
+        <div class="bg-white ${borderColor} rounded-xl shadow-sm flex flex-col h-full">
         
         <div class="p-5 flex-grow">
             <div class="flex items-center justify-between mb-4">
