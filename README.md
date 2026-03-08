@@ -1,4 +1,5 @@
 📝 JavaScript Core Concepts
+
 1️⃣ What is the difference between var, let, and const?
 var: The old way to declare variables. It is function-scoped and can be re-declared, which often leads to bugs.
 
