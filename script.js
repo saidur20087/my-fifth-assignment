@@ -46,10 +46,10 @@ function displayIssues(issues) {
         // Status check
         const status = issue.status ? issue.status.toLowerCase() : '';
         const isOpen = status === 'open';
-        const borderColor = isOpen ? 'border-t-green-500' : 'border-t-purple-500';
+        let borderColor = isOpen ? 'border-t-green-500' : 'border-t-purple-500';
 
         const card = `
-        <div class="bg-white ${borderColor} rounded-xl shadow-sm flex flex-col h-full">
+        <div class="bg-white border-t-4 ${borderColor} rounded-xl shadow-sm flex flex-col h-full">
         
         <div class="p-5 flex-grow">
             <div class="flex items-center justify-between mb-4">
